@@ -31,7 +31,6 @@
 // can wait for an event to happen and then react to it
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
 document.querySelector('.number').textContent = secretNumber;
-
 let score = 20;
 
 document.querySelector('.check').addEventListener('click', function () {
@@ -50,7 +49,8 @@ document.querySelector('.check').addEventListener('click', function () {
       score--;
       document.querySelector('.score').textContent = score;
     } else {
-      document.querySelector('.message').textConent = `You lose the game!`;
+      console.log(`you lose the game`); // this is working but the message isn't updating for some reason
+      document.querySelector('.message').textContent = 'Hold that L';
       document.querySelector('.score').textContent = 0;
     }
   } else if (guess < secretNumber) {
@@ -59,5 +59,6 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.score').textContent = score;
   }
 });
+
 // method so needs ()
 // addEventlistener is the most used
