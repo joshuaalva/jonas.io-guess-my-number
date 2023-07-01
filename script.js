@@ -35,31 +35,35 @@ let score = 20;
 
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
-  console.log(typeof guess, guess);
-
+  // console.log(typeof guess, guess);
+  // when there is no input
   if (!guess) {
     document.querySelector('.message').textContent = 'No number!';
+    // when player wins
   } else if (guess === secretNumber) {
     document.querySelector(
       '.message'
     ).textContent = `You Win! Guess is correct`;
+    // have to specify a string when using these selectors
+    document.querySelector('body').style.backgroundColor = `#60b347`;
+    document.querySelector('.number').style.width = `30rem`;
   } else if (guess > secretNumber) {
+    // when guess it too high
     if (score > 1) {
       document.querySelector('.message').textContent = `Guess is too high`;
       score--;
       document.querySelector('.score').textContent = score;
     } else {
-      console.log(`you lose the game`); // this is working but the message isn't updating for some reason
       document.querySelector('.message').textContent = 'Hold that L';
       document.querySelector('.score').textContent = 0;
     }
+    // when guess is too low
   } else if (guess < secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = `Guess is too  low!`;
       score--;
       document.querySelector('.score').textContent = score;
     } else {
-      console.log(`you lose the game`); // this is working but the message isn't updating for some reason
       document.querySelector('.message').textContent = 'Hold that L';
       document.querySelector('.score').textContent = 0;
     }
@@ -68,3 +72,4 @@ document.querySelector('.check').addEventListener('click', function () {
 
 // method so needs ()
 // addEventlistener is the most used
+// Manipulating CSS styles
