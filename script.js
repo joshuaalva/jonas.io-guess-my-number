@@ -54,9 +54,15 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.score').textContent = 0;
     }
   } else if (guess < secretNumber) {
-    document.querySelector('.message').textContent = `Guess is too  low!`;
-    score--;
-    document.querySelector('.score').textContent = score;
+    if (score > 1) {
+      document.querySelector('.message').textContent = `Guess is too  low!`;
+      score--;
+      document.querySelector('.score').textContent = score;
+    } else {
+      console.log(`you lose the game`); // this is working but the message isn't updating for some reason
+      document.querySelector('.message').textContent = 'Hold that L';
+      document.querySelector('.score').textContent = 0;
+    }
   }
 });
 
