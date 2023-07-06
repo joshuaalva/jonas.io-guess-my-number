@@ -96,3 +96,5 @@ document.querySelector('.again').addEventListener('click', function () {
 });
 
 // Implementing High Scores
+
+// refactoring duplicate code DRY principle
