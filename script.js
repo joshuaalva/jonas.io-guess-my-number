@@ -52,27 +52,37 @@ document.querySelector('.check').addEventListener('click', function () {
     if (score > highscore) {
       highscore = score;
       document.querySelector('.highscore').textContent = highscore;
+    } else if (guess !== secretNumber) {
+      if (score > 1) {
+        document.querySelector('.message').textContent =
+          guess > secretNumber ? `Guess is too high` : `Guess is too low`;
+        score--;
+        document.querySelector('.score').textContent = score;
+      } else {
+        document.querySelector('.message').textContent = 'Hold that L';
+        document.querySelector('.score').textContent = 0;
+      }
     }
-  } else if (guess > secretNumber) {
     // when guess it too high
-    if (score > 1) {
-      document.querySelector('.message').textContent = `Guess is too high`;
-      score--;
-      document.querySelector('.score').textContent = score;
-    } else {
-      document.querySelector('.message').textContent = 'Hold that L';
-      document.querySelector('.score').textContent = 0;
-    }
+    // } else if (guess > secretNumber) {
+    //   if (score > 1) {
+    //     document.querySelector('.message').textContent = `Guess is too high`;
+    //     score--;
+    //     document.querySelector('.score').textContent = score;
+    //   } else {
+    //     document.querySelector('.message').textContent = 'Hold that L';
+    //     document.querySelector('.score').textContent = 0;
+    //   }
     // when guess is too low
-  } else if (guess < secretNumber) {
-    if (score > 1) {
-      document.querySelector('.message').textContent = `Guess is too  low!`;
-      score--;
-      document.querySelector('.score').textContent = score;
-    } else {
-      document.querySelector('.message').textContent = 'Hold that L';
-      document.querySelector('.score').textContent = 0;
-    }
+    // } else if (guess < secretNumber) {
+    // if (score > 1) {
+    //   document.querySelector('.message').textContent = `Guess is too  low!`;
+    //   score--;
+    //   document.querySelector('.score').textContent = score;
+    // } else {
+    //   document.querySelector('.message').textContent = 'Hold that L';
+    //   document.querySelector('.score').textContent = 0;
+    // }
   }
 });
 
