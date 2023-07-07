@@ -33,12 +33,17 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 let highscore = 0;
 
+const displayMessage = function (message) {
+  document.querySelector('.message').textContent = message;
+};
+
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
   // console.log(typeof guess, guess);
   // when there is no input
   if (!guess) {
-    document.querySelector('.message').textContent = 'No number!';
+    // document.querySelector('.message').textContent = 'No number!';
+    displayMessage(`No number!`);
     // when player wins
   } else if (guess === secretNumber) {
     document.querySelector(
@@ -52,28 +57,40 @@ document.querySelector('.check').addEventListener('click', function () {
     if (score > highscore) {
       highscore = score;
       document.querySelector('.highscore').textContent = highscore;
-    }
-  } else if (guess > secretNumber) {
-    // when guess it too high
+    } // when guess is wrong
+  } else if (guess !== secretNumber) {
     if (score > 1) {
-      document.querySelector('.message').textContent = `Guess is too high`;
+      // document.querySelector('.message').textContent =
+      displayMessage(
+        guess > secretNumber ? `Guess is too high` : `Guess is too low`
+      );
       score--;
       document.querySelector('.score').textContent = score;
     } else {
-      document.querySelector('.message').textContent = 'Hold that L';
-      document.querySelector('.score').textContent = 0;
-    }
-    // when guess is too low
-  } else if (guess < secretNumber) {
-    if (score > 1) {
-      document.querySelector('.message').textContent = `Guess is too  low!`;
-      score--;
-      document.querySelector('.score').textContent = score;
-    } else {
-      document.querySelector('.message').textContent = 'Hold that L';
+      displayMessage(`Hold that L!`);
       document.querySelector('.score').textContent = 0;
     }
   }
+  // else if (guess > secretNumber) {
+  //   // when guess it too high
+  //   if (score > 1) {
+  //     document.querySelector('.message').textContent = `Guess is too high`;
+  //     score--;
+  //     document.querySelector('.score').textContent = score;
+  //   } else {
+  //     document.querySelector('.message').textContent = 'Hold that L';
+  //     document.querySelector('.score').textContent = 0;
+  //   }
+  //   // when guess is too low
+  // } else if (guess < secretNumber) {
+  //   if (score > 1) {
+  //     document.querySelector('.message').textContent = `Guess is too  low!`;
+  //     score--;
+  //     document.querySelector('.score').textContent = score;
+  //   } else {
+  //     document.querySelector('.message').textContent = 'Hold that L';
+  //     document.querySelector('.score').textContent = 0;
+  //   }
 });
 
 // method so needs ()
